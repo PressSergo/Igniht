@@ -1,0 +1,475 @@
+2020-11-10 00:33:31.920  WARN 3071 --- [main] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5002 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2020-11-10 00:33:36.932  INFO 3071 --- [main] com.example.demo.DemoApplication         : Starting DemoApplication on MacBook-Pro-Sergej.local with PID 3071 (/Users/sergei/Desktop/Intech/publisher/target/classes started by sergei in /Users/sergei/Desktop/Intech/publisher)
+2020-11-10 00:33:36.933  INFO 3071 --- [main] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2020-11-10 00:33:37.299  INFO 3071 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 00:33:37.300  INFO 3071 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 00:33:37.313  INFO 3071 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3ms. Found 0 Redis repository interfaces.
+2020-11-10 00:33:37.456  INFO 3071 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 00:33:37.457  INFO 3071 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 00:33:37.464  INFO 3071 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6ms. Found 0 Redis repository interfaces.
+2020-11-10 00:33:37.826  INFO 3071 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2020-11-10 00:33:37.840  INFO 3071 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-10 00:33:37.840  INFO 3071 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2020-11-10 00:33:37.918  INFO 3071 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-10 00:33:37.918  INFO 3071 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 943 ms
+2020-11-10 00:33:38.291  INFO 3071 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-10 00:33:38.491  INFO 3071 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2020-11-10 00:33:38.503  INFO 3071 --- [main] com.example.demo.DemoApplication         : Started DemoApplication in 16.92 seconds (JVM running for 22.455)
+2020-11-10 00:33:53.381  INFO 3071 --- [http-nio-9091-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-10 00:33:53.382  INFO 3071 --- [http-nio-9091-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-10 00:33:53.392  INFO 3071 --- [http-nio-9091-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-11-10 00:33:53.505 ERROR 3071 --- [http-nio-9091-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.ClassCastException: com.example.demo.domain.Message cannot be cast to java.lang.String] with root cause
+
+java.lang.ClassCastException: com.example.demo.domain.Message cannot be cast to java.lang.String
+	at org.springframework.data.redis.serializer.StringRedisSerializer.serialize(StringRedisSerializer.java:36) ~[spring-data-redis-2.3.5.RELEASE.jar:2.3.5.RELEASE]
+	at org.springframework.data.redis.core.RedisTemplate.rawValue(RedisTemplate.java:584) ~[spring-data-redis-2.3.5.RELEASE.jar:2.3.5.RELEASE]
+	at org.springframework.data.redis.core.RedisTemplate.convertAndSend(RedisTemplate.java:837) ~[spring-data-redis-2.3.5.RELEASE.jar:2.3.5.RELEASE]
+	at com.example.demo.services.RedisSender.sendDataToRedisQueue(RedisSender.java:22) ~[classes/:na]
+	at com.example.demo.controller.RedisController.sendDataToRedisQueue(RedisController.java:22) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_144]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_144]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_144]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_144]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626) ~[tomcat-embed-core-9.0.39.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.39.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_144]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_144]
+
+2020-11-10 00:37:42.233  INFO 3071 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-10 00:38:02.675  WARN 3091 --- [main] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5002 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2020-11-10 00:38:07.684  INFO 3091 --- [main] com.example.demo.DemoApplication         : Starting DemoApplication on MacBook-Pro-Sergej.local with PID 3091 (/Users/sergei/Desktop/Intech/publisher/target/classes started by sergei in /Users/sergei/Desktop/Intech/publisher)
+2020-11-10 00:38:07.685  INFO 3091 --- [main] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2020-11-10 00:38:07.981  INFO 3091 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 00:38:07.981  INFO 3091 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 00:38:07.994  INFO 3091 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3ms. Found 0 Redis repository interfaces.
+2020-11-10 00:38:08.102  INFO 3091 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 00:38:08.103  INFO 3091 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 00:38:08.110  INFO 3091 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6ms. Found 0 Redis repository interfaces.
+2020-11-10 00:38:08.351  INFO 3091 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2020-11-10 00:38:08.358  INFO 3091 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-10 00:38:08.358  INFO 3091 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2020-11-10 00:38:08.420  INFO 3091 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-10 00:38:08.420  INFO 3091 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 696 ms
+2020-11-10 00:38:08.859  INFO 3091 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-10 00:38:09.031  INFO 3091 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2020-11-10 00:38:09.041  INFO 3091 --- [main] com.example.demo.DemoApplication         : Started DemoApplication in 16.635 seconds (JVM running for 22.044)
+2020-11-10 00:38:16.013  INFO 3091 --- [http-nio-9091-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-10 00:38:16.014  INFO 3091 --- [http-nio-9091-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-10 00:38:16.023  INFO 3091 --- [http-nio-9091-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2020-11-10 00:38:16.153 ERROR 3091 --- [http-nio-9091-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.ClassCastException: com.example.demo.domain.Message cannot be cast to java.lang.String] with root cause
+
+java.lang.ClassCastException: com.example.demo.domain.Message cannot be cast to java.lang.String
+	at org.springframework.data.redis.serializer.StringRedisSerializer.serialize(StringRedisSerializer.java:36) ~[spring-data-redis-2.3.5.RELEASE.jar:2.3.5.RELEASE]
+	at org.springframework.data.redis.core.RedisTemplate.rawValue(RedisTemplate.java:584) ~[spring-data-redis-2.3.5.RELEASE.jar:2.3.5.RELEASE]
+	at org.springframework.data.redis.core.RedisTemplate.convertAndSend(RedisTemplate.java:837) ~[spring-data-redis-2.3.5.RELEASE.jar:2.3.5.RELEASE]
+	at com.example.demo.services.RedisSender.sendDataToRedisQueue(RedisSender.java:22) ~[classes/:na]
+	at com.example.demo.controller.RedisController.sendDataToRedisQueue(RedisController.java:22) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_144]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_144]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_144]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_144]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626) ~[tomcat-embed-core-9.0.39.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.39.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_144]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_144]
+
+2020-11-10 00:38:20.121  INFO 3091 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-10 00:42:09.455  WARN 3189 --- [main] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5002 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2020-11-10 00:42:14.463  INFO 3189 --- [main] com.example.demo.DemoApplication         : Starting DemoApplication on MacBook-Pro-Sergej.local with PID 3189 (/Users/sergei/Desktop/Intech/publisher/target/classes started by sergei in /Users/sergei/Desktop/Intech/publisher)
+2020-11-10 00:42:14.464  INFO 3189 --- [main] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2020-11-10 00:42:14.843  INFO 3189 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 00:42:14.843  INFO 3189 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 00:42:14.895  INFO 3189 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4ms. Found 0 Redis repository interfaces.
+2020-11-10 00:42:15.015  INFO 3189 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 00:42:15.016  INFO 3189 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 00:42:15.024  INFO 3189 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8ms. Found 0 Redis repository interfaces.
+2020-11-10 00:42:15.367  INFO 3189 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2020-11-10 00:42:15.377  INFO 3189 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-10 00:42:15.378  INFO 3189 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2020-11-10 00:42:15.475  INFO 3189 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-10 00:42:15.476  INFO 3189 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 977 ms
+2020-11-10 00:42:15.963  INFO 3189 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-10 00:42:16.169  INFO 3189 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2020-11-10 00:42:16.181  INFO 3189 --- [main] com.example.demo.DemoApplication         : Started DemoApplication in 17.192 seconds (JVM running for 23.457)
+2020-11-10 00:42:24.598  INFO 3189 --- [http-nio-9091-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-10 00:42:24.600  INFO 3189 --- [http-nio-9091-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-10 00:42:24.611  INFO 3189 --- [http-nio-9091-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2020-11-10 00:43:53.853 ERROR 3189 --- [http-nio-9091-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.ClassCastException: com.example.demo.domain.Message cannot be cast to java.lang.String] with root cause
+
+java.lang.ClassCastException: com.example.demo.domain.Message cannot be cast to java.lang.String
+	at org.springframework.data.redis.serializer.StringRedisSerializer.serialize(StringRedisSerializer.java:36) ~[spring-data-redis-2.3.5.RELEASE.jar:2.3.5.RELEASE]
+	at org.springframework.data.redis.core.RedisTemplate.rawValue(RedisTemplate.java:584) ~[spring-data-redis-2.3.5.RELEASE.jar:2.3.5.RELEASE]
+	at org.springframework.data.redis.core.RedisTemplate.convertAndSend(RedisTemplate.java:837) ~[spring-data-redis-2.3.5.RELEASE.jar:2.3.5.RELEASE]
+	at com.example.demo.services.RedisSender.sendDataToRedisQueue(RedisSender.java:22) ~[classes/:na]
+	at com.example.demo.controller.RedisController.sendDataToRedisQueue(RedisController.java:22) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_144]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_144]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_144]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_144]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:878) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:792) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626) ~[tomcat-embed-core-9.0.39.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.39.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.2.10.RELEASE.jar:5.2.10.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_144]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_144]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.39.jar:9.0.39]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_144]
+
+2020-11-10 00:43:54.061  INFO 3189 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-10 00:45:03.319  WARN 3240 --- [main] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2020-11-10 00:45:08.333  INFO 3240 --- [main] com.example.demo.DemoApplication         : Starting DemoApplication on MacBook-Pro-Sergej.local with PID 3240 (/Users/sergei/Desktop/Intech/publisher/target/classes started by sergei in /Users/sergei/Desktop/Intech/publisher)
+2020-11-10 00:45:08.334  INFO 3240 --- [main] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2020-11-10 00:45:08.662  INFO 3240 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 00:45:08.662  INFO 3240 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 00:45:08.676  INFO 3240 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3ms. Found 0 Redis repository interfaces.
+2020-11-10 00:45:08.799  INFO 3240 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 00:45:08.800  INFO 3240 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 00:45:08.808  INFO 3240 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8ms. Found 0 Redis repository interfaces.
+2020-11-10 00:45:09.084  INFO 3240 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2020-11-10 00:45:09.091  INFO 3240 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-10 00:45:09.091  INFO 3240 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2020-11-10 00:45:09.159  INFO 3240 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-10 00:45:09.160  INFO 3240 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 792 ms
+2020-11-10 00:45:09.579  INFO 3240 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-10 00:45:09.789  INFO 3240 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2020-11-10 00:45:09.808  INFO 3240 --- [main] com.example.demo.DemoApplication         : Started DemoApplication in 16.84 seconds (JVM running for 22.393)
+2020-11-10 00:45:17.301  INFO 3240 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-10 00:45:17.302  INFO 3240 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-10 00:45:17.311  INFO 3240 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2020-11-10 00:45:22.785  INFO 3240 --- [http-nio-9091-exec-1] com.example.demo.services.RedisSender      : Data - Message(id=0, Msisdn=1000, action=PURCHASE) sent through Redis Topic - 5b686e06-92ab-424c-a141-0ccbc68500ef
+2020-11-10 00:45:53.798  INFO 3240 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-10 01:03:09.821  WARN 3326 --- [main] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5002 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2020-11-10 01:03:14.836  INFO 3326 --- [main] com.example.demo.DemoApplication         : Starting DemoApplication on MacBook-Pro-Sergej.local with PID 3326 (/Users/sergei/Desktop/Intech/publisher/target/classes started by sergei in /Users/sergei/Desktop/Intech/publisher)
+2020-11-10 01:03:14.837  INFO 3326 --- [main] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2020-11-10 01:03:15.223  INFO 3326 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 01:03:15.224  INFO 3326 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 01:03:15.242  INFO 3326 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4ms. Found 0 Redis repository interfaces.
+2020-11-10 01:03:15.386  INFO 3326 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 01:03:15.386  INFO 3326 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 01:03:15.393  INFO 3326 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6ms. Found 0 Redis repository interfaces.
+2020-11-10 01:03:15.736  INFO 3326 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2020-11-10 01:03:15.747  INFO 3326 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-10 01:03:15.747  INFO 3326 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2020-11-10 01:03:15.829  INFO 3326 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-10 01:03:15.830  INFO 3326 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 959 ms
+2020-11-10 01:03:16.236  INFO 3326 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-10 01:03:16.427  INFO 3326 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2020-11-10 01:03:16.437  INFO 3326 --- [main] com.example.demo.DemoApplication         : Started DemoApplication in 16.887 seconds (JVM running for 22.683)
+2020-11-10 01:03:24.537  INFO 3326 --- [http-nio-9091-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-10 01:03:24.538  INFO 3326 --- [http-nio-9091-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-10 01:03:24.546  INFO 3326 --- [http-nio-9091-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2020-11-10 01:03:29.946  INFO 3326 --- [http-nio-9091-exec-2] c.e.demo.services.MessageSendingService  : Data - Message(id=0, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 01:03:32.357  INFO 3326 --- [http-nio-9091-exec-3] c.e.demo.services.MessageSendingService  : Data - Message(id=1, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 01:03:33.406  INFO 3326 --- [http-nio-9091-exec-4] c.e.demo.services.MessageSendingService  : Data - Message(id=2, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 01:03:34.120  INFO 3326 --- [http-nio-9091-exec-5] c.e.demo.services.MessageSendingService  : Data - Message(id=3, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 01:04:39.721  INFO 3326 --- [http-nio-9091-exec-7] c.e.demo.services.MessageSendingService  : Data - Message(id=4, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 01:04:40.453  INFO 3326 --- [http-nio-9091-exec-9] c.e.demo.services.MessageSendingService  : Data - Message(id=5, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 01:07:02.078  INFO 3326 --- [http-nio-9091-exec-2] c.e.demo.services.MessageSendingService  : Data - Message(id=6, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 01:07:02.717  INFO 3326 --- [http-nio-9091-exec-3] c.e.demo.services.MessageSendingService  : Data - Message(id=7, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 01:08:29.768  INFO 3326 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-10 10:50:28.952  WARN 3550 --- [main] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5002 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2020-11-10 10:50:33.967  INFO 3550 --- [main] com.example.demo.DemoApplication         : Starting DemoApplication on MacBook-Pro-Sergej.local with PID 3550 (/Users/sergei/Desktop/Intech/publisher/target/classes started by sergei in /Users/sergei/Desktop/Intech/publisher)
+2020-11-10 10:50:33.968  INFO 3550 --- [main] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2020-11-10 10:50:34.274  INFO 3550 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 10:50:34.275  INFO 3550 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 10:50:34.289  INFO 3550 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3ms. Found 0 Redis repository interfaces.
+2020-11-10 10:50:34.397  INFO 3550 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 10:50:34.397  INFO 3550 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 10:50:34.403  INFO 3550 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6ms. Found 0 Redis repository interfaces.
+2020-11-10 10:50:34.663  INFO 3550 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2020-11-10 10:50:34.669  INFO 3550 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-10 10:50:34.669  INFO 3550 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2020-11-10 10:50:34.731  INFO 3550 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-10 10:50:34.731  INFO 3550 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 726 ms
+2020-11-10 10:50:35.094  INFO 3550 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-10 10:50:35.257  INFO 3550 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2020-11-10 10:50:35.265  INFO 3550 --- [main] com.example.demo.DemoApplication         : Started DemoApplication in 16.623 seconds (JVM running for 22.32)
+2020-11-10 10:56:47.420  INFO 3550 --- [http-nio-9091-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-10 10:56:47.421  INFO 3550 --- [http-nio-9091-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-10 10:56:47.425  INFO 3550 --- [http-nio-9091-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2020-11-10 10:56:52.792  INFO 3550 --- [http-nio-9091-exec-2] c.e.demo.services.MessageSendingService  : Data - Message(id=0, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 10:56:55.724  INFO 3550 --- [http-nio-9091-exec-3] c.e.demo.services.MessageSendingService  : Data - Message(id=1, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 10:56:56.410  INFO 3550 --- [http-nio-9091-exec-4] c.e.demo.services.MessageSendingService  : Data - Message(id=2, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 10:56:56.927  INFO 3550 --- [http-nio-9091-exec-5] c.e.demo.services.MessageSendingService  : Data - Message(id=3, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 10:56:57.385  INFO 3550 --- [http-nio-9091-exec-6] c.e.demo.services.MessageSendingService  : Data - Message(id=4, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 10:56:57.882  INFO 3550 --- [http-nio-9091-exec-7] c.e.demo.services.MessageSendingService  : Data - Message(id=5, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 10:56:58.765  INFO 3550 --- [http-nio-9091-exec-8] c.e.demo.services.MessageSendingService  : Data - Message(id=6, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 10:56:59.368  INFO 3550 --- [http-nio-9091-exec-9] c.e.demo.services.MessageSendingService  : Data - Message(id=7, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 10:56:59.878  INFO 3550 --- [http-nio-9091-exec-10] c.e.demo.services.MessageSendingService  : Data - Message(id=8, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 10:58:41.501  INFO 3550 --- [http-nio-9091-exec-3] c.e.demo.services.MessageSendingService  : Data - Message(id=9, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 10:58:44.738  INFO 3550 --- [http-nio-9091-exec-4] c.e.demo.services.MessageSendingService  : Data - Message(id=10, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 10:58:45.457  INFO 3550 --- [http-nio-9091-exec-5] c.e.demo.services.MessageSendingService  : Data - Message(id=11, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 10:58:46.039  INFO 3550 --- [http-nio-9091-exec-6] c.e.demo.services.MessageSendingService  : Data - Message(id=12, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:00:09.991  INFO 3550 --- [http-nio-9091-exec-9] c.e.demo.services.MessageSendingService  : Data - Message(id=13, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:01:12.952  INFO 3550 --- [http-nio-9091-exec-2] c.e.demo.services.MessageSendingService  : Data - Message(id=14, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:05:48.577  INFO 3550 --- [http-nio-9091-exec-5] c.e.demo.services.MessageSendingService  : Data - Message(id=15, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:14:29.907  INFO 3550 --- [http-nio-9091-exec-8] c.e.demo.services.MessageSendingService  : Data - Message(id=16, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:15:58.932  INFO 3550 --- [http-nio-9091-exec-1] c.e.demo.services.MessageSendingService  : Data - Message(id=17, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:24:13.904  INFO 3550 --- [http-nio-9091-exec-4] c.e.demo.services.MessageSendingService  : Data - Message(id=18, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:25:25.819  INFO 3550 --- [http-nio-9091-exec-7] c.e.demo.services.MessageSendingService  : Data - Message(id=19, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:26:59.752  INFO 3550 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-10 11:34:20.722  WARN 3822 --- [main] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5004 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2020-11-10 11:34:25.732  INFO 3822 --- [main] com.example.demo.DemoApplication         : Starting DemoApplication on MacBook-Pro-Sergej.local with PID 3822 (/Users/sergei/Desktop/Intech/publisher/target/classes started by sergei in /Users/sergei/Desktop/Intech/publisher)
+2020-11-10 11:34:25.732  INFO 3822 --- [main] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2020-11-10 11:34:26.301  INFO 3822 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 11:34:26.302  INFO 3822 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 11:34:26.326  INFO 3822 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4ms. Found 0 Redis repository interfaces.
+2020-11-10 11:34:26.455  INFO 3822 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 11:34:26.455  INFO 3822 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 11:34:26.462  INFO 3822 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6ms. Found 0 Redis repository interfaces.
+2020-11-10 11:34:26.722  INFO 3822 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2020-11-10 11:34:26.728  INFO 3822 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-10 11:34:26.728  INFO 3822 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2020-11-10 11:34:26.778  INFO 3822 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-10 11:34:26.778  INFO 3822 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1014 ms
+2020-11-10 11:34:27.357  INFO 3822 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-10 11:34:27.517  INFO 3822 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2020-11-10 11:34:27.525  INFO 3822 --- [main] com.example.demo.DemoApplication         : Started DemoApplication in 17.054 seconds (JVM running for 22.539)
+2020-11-10 11:34:41.582  INFO 3822 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-10 11:34:41.592  INFO 3822 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-10 11:34:41.604  INFO 3822 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2020-11-10 11:34:47.023  INFO 3822 --- [http-nio-9091-exec-1] c.e.demo.services.MessageSendingService  : Data - Message(id=0, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:36:28.866  INFO 3822 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-11-10 11:37:11.643  WARN 3831 --- [main] o.s.boot.StartupInfoLogger               : InetAddress.getLocalHost().getHostName() took 5005 milliseconds to respond. Please verify your network configuration (macOS machines may need to add entries to /etc/hosts).
+2020-11-10 11:37:16.649  INFO 3831 --- [main] com.example.demo.DemoApplication         : Starting DemoApplication on MacBook-Pro-Sergej.local with PID 3831 (/Users/sergei/Desktop/Intech/publisher/target/classes started by sergei in /Users/sergei/Desktop/Intech/publisher)
+2020-11-10 11:37:16.650  INFO 3831 --- [main] com.example.demo.DemoApplication         : No active profile set, falling back to default profiles: default
+2020-11-10 11:37:16.927  INFO 3831 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 11:37:16.927  INFO 3831 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 11:37:16.939  INFO 3831 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3ms. Found 0 Redis repository interfaces.
+2020-11-10 11:37:17.058  INFO 3831 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-11-10 11:37:17.058  INFO 3831 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-11-10 11:37:17.065  INFO 3831 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6ms. Found 0 Redis repository interfaces.
+2020-11-10 11:37:17.312  INFO 3831 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2020-11-10 11:37:17.318  INFO 3831 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-11-10 11:37:17.318  INFO 3831 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2020-11-10 11:37:17.369  INFO 3831 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-11-10 11:37:17.369  INFO 3831 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 687 ms
+2020-11-10 11:37:17.702  INFO 3831 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-11-10 11:37:17.840  INFO 3831 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2020-11-10 11:37:17.847  INFO 3831 --- [main] com.example.demo.DemoApplication         : Started DemoApplication in 16.453 seconds (JVM running for 21.913)
+2020-11-10 11:37:25.337  INFO 3831 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-10 11:37:25.339  INFO 3831 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-11-10 11:37:25.350  INFO 3831 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2020-11-10 11:37:45.648  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=0, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.648  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=0, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.648  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=1, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.648  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=0, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.648  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=2, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.650  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=4, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.650  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=3, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.650  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=5, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.650  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=7, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.650  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=6, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.652  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=9, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.652  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=10, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.652  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=11, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.652  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=8, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.653  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=12, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.654  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=15, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.654  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=13, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.654  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=16, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.654  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=14, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.654  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=17, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.656  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=19, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.656  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=18, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.656  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=20, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.659  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=23, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.659  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=22, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.659  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=24, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.659  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=21, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.659  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=25, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.660  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=28, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.660  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=27, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.660  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=26, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.660  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=29, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.661  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=30, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.662  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=32, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.662  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=31, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.662  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=33, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.662  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=34, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.662  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=35, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.663  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=37, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.663  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=39, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.663  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=38, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.663  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=36, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.664  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=40, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.665  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=41, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.665  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=43, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.665  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=44, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.665  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=42, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.665  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=45, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.666  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=48, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.666  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=49, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.666  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=46, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.666  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=47, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.666  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=50, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.667  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=52, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.667  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=53, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.667  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=51, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.667  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=54, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.667  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=55, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.668  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=59, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.668  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=56, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.668  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=57, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.668  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=58, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.668  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=60, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.669  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=63, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.669  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=65, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.669  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=62, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.669  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=61, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.670  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=64, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.671  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=67, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.671  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=69, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.671  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=66, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.671  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=68, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.671  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=70, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.674  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=72, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.674  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=71, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.674  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=73, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.674  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=74, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.674  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=75, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.675  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=76, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.675  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=77, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.675  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=78, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.675  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=79, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.675  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=80, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.676  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=82, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.676  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=81, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.676  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=83, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.676  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=85, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.677  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=84, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.677  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=86, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.677  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=88, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.677  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=87, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.677  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=89, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.678  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=90, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.678  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=91, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.678  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=93, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.678  INFO 3831 --- [pool-1-thread-5] c.e.demo.services.MessageSendingService  : Data - Message(id=92, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.679  INFO 3831 --- [pool-1-thread-3] c.e.demo.services.MessageSendingService  : Data - Message(id=95, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.679  INFO 3831 --- [pool-1-thread-2] c.e.demo.services.MessageSendingService  : Data - Message(id=94, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.680  INFO 3831 --- [pool-1-thread-4] c.e.demo.services.MessageSendingService  : Data - Message(id=97, Msisdn=1000, action=SUBSCRIPTION) sent through Redis Topic - "Messaging"
+2020-11-10 11:37:45.680  INFO 3831 --- [pool-1-thread-1] c.e.demo.services.MessageSendingService  : Data - Message(id=96, Msisdn=1000, action=PURCHASE) sent through Redis Topic - "Messaging"
+2020-11-10 11:38:08.040  INFO 3831 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
